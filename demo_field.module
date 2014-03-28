@@ -1,23 +1,39 @@
 <?php
 
 /**
- * Create a field. Fields can be created without you need to attach them to
- * entities.
+ * Implement hook_field_info().
  */
-$field = array(
-  'field_name' => 'demo_field',
-  'type' => 'text',
-);
-// field_create_field($field);
+function demo_field_field_info() {
+  return array(
+    'demo_field' => array(
+      'label' => t('Demo field'),
+      'description' => t('Field API demo.'),
+    ),
+  );
+}
 
 /**
- * Bind field to a entity bundle.
+ * Create a field. Fields can be created without any needs to attach them to
+ * entities.
  */
-$instance = array(
-  'field_name' => 'demo_field',
-  'entity_type' => 'node',
-  'bundle' => 'article',
-  'required' => TRUE,
-);
+function demo_field_enable() {
+  $field = array(
+    'field_name' => 'demo_field',
+    'type' => 'text',
+  );
+  print "Create field\n";
+  field_create_field($field);
 
-// field_create_instance($instance);
+  /**
+   * Bind field to a entity bundle.
+   */
+  $instance = array(
+    'field_name' => 'demo_field',
+    'entity_type' => 'node',
+    'bundle' => 'article',
+    'required' => TRUE,
+  );
+
+  field_create_instance($instance);
+
+}

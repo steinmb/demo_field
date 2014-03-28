@@ -1,0 +1,5 @@
+<?php
+
+function demo_field_uninstall() {
+
+}
