@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * Create a field. Fields can be created without you need to attach them to
+ * entities.
+ */
+$field = array(
+  'field_name' => 'demo_field',
+  'type' => 'text',
+);
+// field_create_field($field);
+
+/**
+ * Bind field to a entity bundle.
+ */
+$instance = array(
+  'field_name' => 'demo_field',
+  'entity_type' => 'node',
+  'bundle' => 'article',
+  'required' => TRUE,
+);
+
+// field_create_instance($instance);
