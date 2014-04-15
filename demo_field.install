@@ -1,5 +1,34 @@
 <?php
 
-function demo_field_uninstall() {
+/**
+ * Create a field. Fields can be created without any needs to attach them to
+ * entities.
+ */
+function demo_field_enable() {
+  $field = array(
+    'field_name' => 'demo_field',
+    'type' => 'text',
+  );
+  field_create_field($field);
 
+  /**
+   * Bind field to a entity bundle.
+   */
+  $instance = array(
+    'field_name' => $field['field_name'],
+    'entity_type' => 'node',
+    'bundle' => 'article',
+  );
+  field_create_instance($instance);
+}
+
+function demo_field_disable() {
+  $instance = array(
+    'field_name' => 'demo_field',
+    'entity_type' => 'node',
+    'bundle' => 'article',
+  );
+  field_delete_instance($instance);
+  field_delete_field($instance['field_name']);
+  print 'Removed ' . $instance['field_name'] . "\n";
 }
