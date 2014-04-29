@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Implements hook_enable().
+ *
  * Create a field. Fields can be created without any needs to attach them to
  * entities.
  */
@@ -22,6 +24,11 @@ function demo_field_enable() {
   field_create_instance($instance);
 }
 
+/**
+ * Implements hook_disable().
+ *
+ * Remove field from node bundle (content type) and then delete the field.
+ */
 function demo_field_disable() {
   $instance = array(
     'field_name' => 'demo_field',
